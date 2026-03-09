@@ -5,7 +5,10 @@ declare_id!("2sm1vNABdUrSB8tWC8FZksiC18S85mXUpA7tXtYcVNzK");
 #[program]
 pub mod juegos {
     use super::*;
+/// use el archivo de cliente para correr y sea mas rapido
 
+
+    
     pub fn correr_juego(context: Context<NuevoTjuego>, nombre: String) -> Result<()> {
 
         let cuenta_id = context.accounts.cuenta.key();
