@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("2sm1vNABdUrSB8tWC8FZksiC18S85mXUpA7tXtYcVNzK");
+declare_id!("DTurQXEmbxxFUTGFgrLdjEbRhxqavSEba1xndB32k1tx");
 
 #[program]
 pub mod juegos {
@@ -19,7 +19,7 @@ pub mod juegos {
 
         Ok(())
     }
-
+//ALTAS, BAJAS, CAMBIOS Y OBSERVAR 
     pub fn agregar_juego(context: Context<Nuevojuego>,nombre: String,precio: u16,plataforma: String,genero: String) -> Result<()> {
 
         let juego: Juego = Juego{
@@ -81,8 +81,8 @@ pub mod juegos {
     Err(Errores::JuegoNoExiste.into())
 }
 }
-
-
+//FIN DEL CRUD
+//Errores de pequeñas validaciones
 #[error_code]
 pub enum Errores{
     #[msg("ERROR, QUIEN ERES TU!?????")]
@@ -91,6 +91,10 @@ pub enum Errores{
     #[msg("Error ese Juego no existe :,c")]
     JuegoNoExiste,
 }
+// FIN EL ERROR
+
+
+//contexto de la cuenta
 
 #[account]
 #[derive(InitSpace)]
@@ -120,9 +124,9 @@ pub struct Juego{
 
     pub disponible: bool,
 }
+//fin del contesto de la cuenta
 
-/// Contexto
-
+// Contexto de modificacion de los juegos
 #[derive(Accounts)]
 pub struct NuevoTjuego<'info>{
 
@@ -149,3 +153,4 @@ pub struct Nuevojuego<'info>{
     #[account(mut)]
     pub jjuego:Account<'info, Tjuego>,
 }
+//fin del contexto
